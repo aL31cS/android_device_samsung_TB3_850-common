@@ -23,7 +23,7 @@
 # Inherit from qcom-common
 -include device/samsung/qcom-common/BoardConfigCommon.mk
 
-COMMON_PATH := device/samsung/jf-common
+COMMON_PATH := device/samsung/-common
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8960
@@ -33,10 +33,6 @@ TARGET_CPU_VARIANT := krait
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
-
-# ROOTDIR
-PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/rootdir,root) 
 
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 zcache msm_rtb.filter=0x3F ehci-hcd.park=3
