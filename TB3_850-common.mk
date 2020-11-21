@@ -18,6 +18,9 @@ $(LOCAL_PATH) := device/samsung/TB3_850-common
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
+# GPS
+$(call inherit-product, device/common/gps/gps_eu_supl.mk)
+
 # Get non-open-source specific aspects if available
 $(call inherit-product-if-exists, vendor/Lenovo/TB3_850-common/TB3_850-common-vendor.mk)
 
@@ -37,6 +40,17 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
 	frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
 	frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
+
+# Copy kernel
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+	LOCAL_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
+else
+	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
+
+# ROOTDIR
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/rootdir,root) 
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal
