@@ -23,7 +23,7 @@
 # Inherit from qcom-common
 -include device/samsung/qcom-common/BoardConfigCommon.mk
 
-COMMON_PATH := device/samsung/-common
+COMMON_PATH := device/samsung/TB3_850-common
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8960
